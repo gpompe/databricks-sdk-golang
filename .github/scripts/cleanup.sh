@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [[ -z "$DATABRICKS_HOST" ]]; then
+    echo "No [DATABRICKS_HOST] specified."
+    exit 1
+fi
+
+if [[ -z "$DATABRICKS_TOKEN" ]]; then
+    echo "No [DATABRICKS_TOKEN] specified."
+    exit 1
+fi
+
 echo "Validating if databricks-cli is in the PATH"
 if ! hash databricks 2>/dev/null; then
     echo "'databricks' was not found in PATH. Installing ..."
